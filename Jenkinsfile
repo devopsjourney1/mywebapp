@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Testing') {
             steps {
-                sh 'docker run --publish 80:5000 -d mywebapp:${BUILD_NUMBER}'
+                sh 'docker run --publish 80:5000 -p 8000:8000 -d mywebapp:${BUILD_NUMBER}'
                 sh 'sleep 10'
                 sh 'curl -f -s -LI localhost:80'
                 //sh "docker stop \$(docker ps -a | grep -i mywebapp:${BUILD_NUMBER} | awk '{ print \$1 }') || true"
