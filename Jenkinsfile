@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build --no-cache -t mywebapp:${BUILD_NUMBER} docker/docker_app1/.'
+                sh 'docker build --no-cache -t mywebapp:${BUILD_NUMBER} .'
             }
         }
         stage('Testing') {
