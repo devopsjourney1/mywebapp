@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Checkout code') {
             steps {
-                git(url: 'https://github.com/devopsjourney1/terraform-testing', branch: 'master')
+                sh "ls -ltr"
+                git(url: 'https://github.com/devopsjourney1/mywebapp', branch: 'master')
             }
         }
         stage('Setup Environment') {
@@ -14,7 +15,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build --no-cache -t mywebapp:${BUILD_NUMBER} .'
+                sh 'docker build --no-cache -t mywebapp:${BUILD_NUMBER} docker/docker_app1/.'
             }
         }
         stage('Testing') {
