@@ -12,7 +12,7 @@ REQUESTS = Counter('requests_total', 'Hello Worlds requested.', labelnames=['pat
 @app.route("/")
 def hello_world():
     REQUESTS.labels("/").inc()
-    return f"Hello, World! Served from {socket.gethostname()}"
+    return f"Hello, World!! Served from {socket.gethostname()}"
 
 @app.route("/bad")
 def bad_page():
