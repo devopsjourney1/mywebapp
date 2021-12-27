@@ -1,11 +1,10 @@
 from flask import Flask, json
 import socket
-from prometheus_client import start_http_server, Histogram, Counter, Gauge
+from prometheus_client import Histogram, Counter, Gauge
+import prometheus_client
 
 
 app = Flask(__name__)
-
-start_http_server(8000)
 
 REQUESTS = Counter('requests_total', 'Hello Worlds requested.', labelnames=['path'])
 #LATENCY = Histogram('latency_seconds', 'Time for a request', labelnames=['path'])
@@ -26,3 +25,7 @@ def bad_page():
         mimetype='application/json'
     )
     return response
+
+@app.route("/metrics")
+def requests_count():
+    return prometheus_client.generate_latest()
