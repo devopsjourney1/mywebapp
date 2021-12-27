@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build -t mywebapp:${BUILD_NUMBER} docker/docker_app1/.'
+                sh 'docker build -t mywebapp:${BUILD_NUMBER} .'
             }
         }
         stage('Testing') {
