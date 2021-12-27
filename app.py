@@ -1,6 +1,6 @@
 from flask import Flask, json
 import socket
-from prometheus_client import start_http_server
+from prometheus_client import start_http_server, Histogram, Counter, Gauge
 
 
 app = Flask(__name__)
