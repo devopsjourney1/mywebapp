@@ -27,5 +27,6 @@ def bad_page():
     return response
 
 @app.route("/metrics")
-def requests_count():
+def metrics():
+    REQUESTS.labels("/metrics").inc()
     return prometheus_client.generate_latest()
