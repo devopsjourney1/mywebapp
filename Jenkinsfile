@@ -22,7 +22,7 @@ pipeline {
                 sh 'docker run --publish 80:5000 -d mywebapp:${BUILD_NUMBER}'
                 sh 'sleep 10'
                 sh 'curl -f -s -LI localhost:80'
-                sh "docker stop \$(docker ps -a | grep -i mywebapp:${BUILD_NUMBER} | awk '{ print \$1 }') || true"
+                //sh "docker stop \$(docker ps -a | grep -i mywebapp:${BUILD_NUMBER} | awk '{ print \$1 }') || true"
             }
         }
         stage('Deploy') {             
