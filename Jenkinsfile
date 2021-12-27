@@ -1,14 +1,15 @@
 pipeline {
     agent { label 'agent1' }
     stages {
-        stage('Checkout code') {
-            steps {
-                sh "ls -ltr"
-                git(url: 'https://github.com/devopsjourney1/mywebapp', branch: 'master')
-            }
-        }
+        //stage('Checkout code') {
+        //    steps {
+        //        sh "ls -ltr"
+        //        git(url: 'https://github.com/devopsjourney1/mywebapp', branch: 'master')
+        //    }
+        //}
         stage('Setup Environment') {
             steps {
+                sh "ls -ltr"
                 sh "docker stop \$(docker ps -a | grep -i mywebapp | awk '{ print \$1 }') || true"
                 sh "docker rm \$(docker ps -a | grep -i mywebapp | awk '{ print \$1 }') || true"
             }
