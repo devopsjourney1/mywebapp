@@ -9,6 +9,9 @@ spec:
   - port: 5000
     protocol: TCP
     name: flask
+  - port: 8001
+    protocol: TCP
+    name: prometheus_stats
   selector:
     app: mywebapp
     env: prod
@@ -17,7 +20,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mypod
+  name: mydeployment
   labels:
     app: mywebapp
     env: prod
@@ -35,6 +38,7 @@ spec:
       containers:
       - name: mycontainer
         image: devopsjourney1/mywebapp:prod
+        imagePullPolicy: "Always"
         resources:
           requests:
             memory: "16Mi" # mebibytes
@@ -44,3 +48,4 @@ spec:
             cpu: "100m"
         ports:
           - containerPort: 5000
+          - containerPort: 8001

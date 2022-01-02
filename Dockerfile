@@ -7,6 +7,6 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 RUN apk add --no-cache curl
 EXPOSE 5000
-EXPOSE 8000
+EXPOSE 8001
 COPY . .
 CMD ["flask", "run"]

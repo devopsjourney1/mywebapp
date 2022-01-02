@@ -8,13 +8,14 @@ app = Flask(__name__)
 
 REQUESTS = Counter('mywebapp_requests_total', 'Hello Worlds requested.', labelnames=['path'])
 LATENCY = Histogram('mywebapp_latency_seconds', 'Time for a request', labelnames=['path'])
-start_http_server(8000)
+start_http_server(8001)
 
 @LATENCY.time()
 @app.route("/")
 def hello_world():
     REQUESTS.labels("/").inc()
-    return f"Hello, World!! Served from {socket.gethostname()}"
+    html = f"<h1>My WebApp!</h1> Hello World! Served from <b>{socket.gethostname()}</b>"
+    return html
 
 @LATENCY.time()
 @app.route("/bad")
