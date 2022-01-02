@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Deploy') {             
             steps {
-                sh "docker tag mywebapp:${BUILD_NUMBER} devopsjourney1/mywebapp:$_${BUILD_NUMBER}"
+                sh "docker tag mywebapp:${BUILD_NUMBER} devopsjourney1/mywebapp:${BUILD_NUMBER}"
                 sh "docker tag mywebapp:${BUILD_NUMBER} devopsjourney1/mywebapp:prod"
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'username')]) {
                   sh "echo ${password} | docker login --username ${username} --password-stdin"
